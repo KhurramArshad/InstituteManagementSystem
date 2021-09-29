@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends 'home/base_home.html' %}
+{% load tailwind_filters %}
+{% load static %}
+        {% block content %}
+<br><br>
+<div class="container">
+<form method="POST">
+        {% csrf_token %}
+  <div class="form-group">
+    {{form|crispy}}
+  </div>
+
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
+</div>
+        {% endblock %}

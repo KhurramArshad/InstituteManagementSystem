@@ -1,0 +1,34 @@
+<div class="container" hx-target="this" hx-swap="outerHTML">
+
+
+<tr>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 h-10 w-10">
+                    <img class="h-10 w-10 rounded-full" src="{{students.student_picture.url}}" alt="">
+                  </div>
+                  <div class="ml-4">
+                    <div class="text-sm font-medium text-gray-900">
+                      {{students.student_name}}
+                    </div>
+                    <div class="text-sm text-gray-500">
+                      {{students.student_class}} | {{students.student_section}}
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-900">Receivable amount from this student is:</div>
+                <div class="text-sm text-gray-500">Rs. {{students.student_fee}}/-</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-green-800">
+                  Fee Due
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                <a href="{% url 'add_receivable' students.id %}" id="btn-submit" style="background:#C3155D; color: #fff; padding:5px; border-radius:5px;">Send to receivables</a>
+              </td>
+            </tr>
+
+</div>

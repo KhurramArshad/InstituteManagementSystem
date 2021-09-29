@@ -1,0 +1,34 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% load static %}
+{% block content %}
+<br>
+
+
+<div class="container">
+
+
+<div id="classforms">
+
+  {% for classes in classes %}
+  <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col" style="text-align:center;">{{classes.name}}</th>
+    </tr>
+  </thead>
+  </table>
+  {% for students in students %}
+    {% if classes.id == students.student_class.id %}
+      {% include 'dashboard/students/partial/student_detail.html' %}
+    {% endif %}
+  {% endfor %}
+  {% endfor %}
+</div>
+  <br>
+<button class="btn btn-primary" hx-get="{% url 'create_student' %}" hx-swap="beforeend" hx-target="#classforms">
+    Add New Student
+  </button>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% load static %}
+{% block content %}
+<br>
+
+
+
+  <br>
+<div>
+  {% for class in classes %}
+  {{class.name}}
+    {% for fee in fee %}
+  {% if class.name == fee.class_of_student %}
+
+    {% include 'finance/partial/fee_detail.html' %}
+  {% endif %}
+  {% endfor %}
+  {% endfor %}
+</div>
+  <br>
+
+
+</div>
+
+{% endblock %}

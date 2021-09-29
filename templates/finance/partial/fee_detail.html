@@ -1,0 +1,23 @@
+<div class="container" hx-target="this" hx-swap="outerHTML">
+  <table class="table">
+
+  <tbody>
+
+    <tr>
+
+      <td>{{fee.name_of_student}}</td>
+      <td>{{fee.receivable_Date}}</td>
+      <td>{{fee.fee_receivable}}</td>
+      <td>{{fee.received_Date}}</td>
+      <td>{{fee.fee_received}}</td>
+      <td>
+          <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+        <a hx-get="{% url 'edit_fee' fee.id %}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+        <a hx-post="" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+</div>

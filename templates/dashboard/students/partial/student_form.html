@@ -1,0 +1,13 @@
+{% load tailwind_filters %}
+
+<div hx-target="this" hx-swap="outerHTML">
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form|crispy }}
+    {% if students %}
+    <button class="btn btn-primary" hx-post="{% url 'edit_student' students.id %}">Update</button>
+     {% else %}
+    <button class="btn btn-primary" hx-post=".">Save</button>
+     {% endif %}
+</form>
+</div>

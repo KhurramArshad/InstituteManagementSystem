@@ -1,0 +1,22 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% load static %}
+{% block content %}
+<br>
+
+
+<div class="container">
+  <button class="btn btn-primary" hx-get="{% url 'create_section' %}" hx-swap="beforeend" hx-target="#classforms">
+    Add New Section
+  </button>
+  <br>
+<div id="classforms">
+  {% for sections in sections %}
+    {% include 'dashboard/sections/partial/section_detail.html' %}
+  {% endfor %}
+</div>
+  <br>
+
+
+</div>
+
+{% endblock %}

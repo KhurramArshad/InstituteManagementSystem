@@ -1,0 +1,24 @@
+
+
+<div class="container" hx-target="this" hx-swap="outerHTML">
+  <table class="table">
+
+  <tbody>
+
+    <tr>
+      <td><img src="{{students.student_picture.url}}" width="50" height="50"></td>
+      <td>{{students.student_name}}</td>
+      <td>{{students.student_class}}</td>
+      <td>{{students.student_section}}</td>
+      <td>
+          <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+        <a hx-get="{% url 'edit_student' students.id %}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+        <a hx-post="{% url 'delete_student' students.id %}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+</div>
+

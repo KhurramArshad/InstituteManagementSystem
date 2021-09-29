@@ -1,0 +1,61 @@
+ /* Modify the background color */
+         
+        .navbar-custom {
+            background-color: #191C24;
+        }
+        /* Modify brand and text color */
+         
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text {
+            color: #fff;
+            font-size: 30px;
+        }
+        .nav-link {
+            color: #fff;
+            font-size: 15px;
+        }
+        .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+            background-color: #009FBD;
+            color: black;
+        }
+        .ProfileImg{
+            
+            border-radius: 10px;
+            padding: 5px;
+            width: 50px;
+        }
+
+
+      
+/* Set the border color */
+          
+        .custom-toggler.navbar-toggler {
+            border-color: blue;
+        }
+        /* Setting the stroke to green using rgb values (0, 128, 0) */
+          
+        .custom-toggler .navbar-toggler-icon {
+            background-image: url(
+"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 128, 0, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+        }
+
+.card-header {
+
+    background-color: #C3155D;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    
+}
+
+.cls{
+    margin-left: 100px;
+}
+.clsClr{
+    background-color: #007BFF;
+    text-align: center;
+    font-weight: 700;
+}
+.card-title{
+    text-align: center;
+}

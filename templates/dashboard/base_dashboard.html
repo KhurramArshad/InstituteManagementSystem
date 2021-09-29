@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'CSS/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/myStyle.css' %}">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <title>{{user.first_name}} Admin</title>
+    <script src="https://unpkg.com/htmx.org@1.5.0"></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+body {
+    color: #404E67;
+    background: #F5F7FA;
+    font-family: 'Open Sans', sans-serif;
+}
+.table-wrapper {
+    width: 700px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.table-title {
+    padding-bottom: 10px;
+    margin: 0 0 10px;
+}
+.table-title h2 {
+    margin: 6px 0 0;
+    font-size: 22px;
+}
+.table-title .add-new {
+    float: right;
+    height: 30px;
+    font-weight: bold;
+    font-size: 12px;
+    text-shadow: none;
+    min-width: 100px;
+    border-radius: 50px;
+    line-height: 13px;
+}
+.table-title .add-new i {
+    margin-right: 4px;
+}
+table.table {
+    table-layout: fixed;
+}
+table.table tr th, table.table tr td {
+    border-color: #e9e9e9;
+}
+table.table th i {
+    font-size: 13px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+table.table th:last-child {
+    width: 100px;
+}
+table.table td a {
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 5px;
+    min-width: 24px;
+}
+table.table td a.add {
+    color: #27C46B;
+}
+table.table td a.edit {
+    color: #FFC107;
+}
+table.table td a.delete {
+    color: #E34724;
+}
+table.table td i {
+    font-size: 19px;
+}
+table.table td a.add i {
+    font-size: 24px;
+    margin-right: -1px;
+    position: relative;
+    top: 3px;
+}
+table.table .form-control {
+    height: 32px;
+    line-height: 32px;
+    box-shadow: none;
+    border-radius: 2px;
+}
+table.table .form-control.error {
+    border-color: #f50000;
+}
+table.table td .add {
+    display: none;
+}
+</style>
+  </head>
+  <body>
+    <!-- Nav Bar Start -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <img class="ProfileImg" src="{{profile.picture.url}}">
+      <a class="navbar-brand" href="#">{{profile.name}}</a>
+    <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav ml-auto" >
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>&nbsp;&nbsp;
+      <li class="nav-item">
+        <a class="nav-link" href="/dashboard">Dashboard</a>
+      </li>&nbsp;&nbsp;
+      <li class="nav-item">
+        <a class="nav-link" href="#">Inquiry Management</a>
+      </li>&nbsp;&nbsp;
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'finance' %}">Finance Management</a>
+      </li>&nbsp;&nbsp;
+      {% if user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="/accounts/logout">Logout</a>
+      </li>&nbsp;&nbsp;
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="/accounts/login">Login</a>
+      </li>&nbsp;&nbsp;
+      {% endif %}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Manage Institute
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="{% url 'classes' %}">Classes</a>
+          <a class="dropdown-item" href="{% url 'sections' %}">Sections</a>
+          <a class="dropdown-item" href="{% url 'students' %}">Students</a>
+          <a class="dropdown-item" href="#">Subjects</a>
+        </div>
+      </li>&nbsp;&nbsp;
+    </ul>
+  </div>
+</nav>
+<!-- Nav Bar Ends -->
+<!-- Profile -->
+<div class="container">
+  <br>
+  <div class="card text-center">
+    <div class="card-header">
+      {{profile.name}}
+    </div>
+    <div class="card-footer text-muted">
+      <p class="card-text">{{profile.email}} | {{profile.cell}} | {{profile.whatsapp}} | {{profile.Address}}</p>
+    </div>
+  </div>
+</div>
+<!-- Profile ends -->
+<div class="main py-5 px-4 sm:px-6 max-w-5xl mx-auto">
+  {% block content %}{% endblock %}
+</div>
+
+
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script>
+        document.body.addEventListener('htmx:configRequest', (event) => {
+            event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+        })
+    </script>
+
+    <script src="{% static 'JS/jquery-3.2.1.slim.min.js' %}"></script>
+
+    <script src="{% static 'JS/popper.min.js' %}"></script>
+    <script src="{% static 'JS/bootstrap.min.js' %}"></script>
+    <script src="https://kit.fontawesome.com/a55aaf7f07.js" crossorigin="anonymous"></script>
+  </body>
+</html>

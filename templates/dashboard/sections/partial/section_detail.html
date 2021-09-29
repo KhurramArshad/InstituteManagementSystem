@@ -1,0 +1,23 @@
+
+
+
+<div class="container" hx-target="this" hx-swap="outerHTML">
+  <table class="table">
+
+  <tbody>
+
+    <tr>
+
+      <td>{{sections.section_name}}</td>
+      <td>{{sections.section_of_class}}</td>
+      <td>
+          <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+        <a hx-get="{% url 'edit_section' sections.id %}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+        <a hx-post="{% url 'delete_section' sections.id %}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+</div>
